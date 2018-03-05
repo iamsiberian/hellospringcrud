@@ -2,10 +2,10 @@ package it.sevenbits.hellospring.core.repository;
 
 import it.sevenbits.hellospring.core.model.Item;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface ItemsRepository {
-    List<Item> getAllItems();
+    Collection getAllItems();
 
     Item create(Item newItem);
 

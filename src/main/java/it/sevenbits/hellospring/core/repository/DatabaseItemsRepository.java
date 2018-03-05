@@ -15,11 +15,12 @@ public class DatabaseItemsRepository implements ItemsRepository {
     @Override
     public List<Item> getAllItems() {
         return jdbcOperations.query(
-                "SELECT id, name FROM item",
+                "SELECT id, firstName, lastName FROM items",
                 (resultSet, i) -> {
-                    long id = resultSet.getLong(1);
-                    String name = resultSet.getString(2);
-                    return new Item(id, name);
+                    long rowId = resultSet.getLong(1);
+                    String rowFirstName = resultSet.getString(2);
+                    String rowLastName = resultSet.getString(3);
+                    return new Item(rowId, rowFirstName, rowLastName);
                 });
 
     }
@@ -32,40 +33,43 @@ public class DatabaseItemsRepository implements ItemsRepository {
 
     @Override
     public Item create(Item newItem) {
-        long id = getNextId();      // or generate UUID
-        String name = newItem.getName();
+        long rowId = getNextId();      // or generate UUID
+        String rowFirstName = newItem.getLastName();
+        String rowLastName = newItem.getLastName();
         int rows = jdbcOperations.update(
-                "INSERT INTO item (id, name) VALUES (?, ?)",
-                id, name
+                "INSERT INTO items (id, firstName, lastName) VALUES (?, ?, ?)",
+                rowId, rowFirstName, rowLastName
         );
-        return new Item(id, name);
+        return new Item(rowId, rowFirstName, rowLastName);
     }
 
     @Override
     public Item getItemById(long id) {
         return jdbcOperations.queryForObject(
-                "SELECT id, name FROM item WHERE id = ?",
+                "SELECT id, firstName, lastName FROM items WHERE id = ?",
                 (resultSet, i) -> {
                     long rowId = resultSet.getLong(1);
-                    String rowName = resultSet.getString(2);
-                    return new Item(rowId, rowName);
+                    String rowFirstName = resultSet.getString(2);
+                    String rowLastName = resultSet.getString(3);
+                    return new Item(rowId, rowFirstName, rowLastName);
                 },
                 id);
     }
 
     @Override
     public Item update(long id, Item newItem) {
-        String name = newItem.getName();
+        String firstName = newItem.getFirstName();
+        String lastName = newItem.getLastName();
         int rows = jdbcOperations.update(
-                "UPDATE item SET name = ? WHERE id = ?",
-                name, id);
-        return new Item(id, name);
+                "UPDATE items SET firstName = ?, lastName = ? WHERE id = ?",
+                firstName, lastName, id);
+        return new Item(id, firstName, lastName);
     }
 
     @Override
     public boolean delete(long id) {
         int rows = jdbcOperations.update(
-                "DELETE FROM item WHERE id = ?",
+                "DELETE FROM items WHERE id = ?",
                 id
         );
         return rows > 0;

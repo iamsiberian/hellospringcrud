@@ -3,6 +3,7 @@ package it.sevenbits.hellospring.web.controllers;
 import it.sevenbits.hellospring.core.model.Item;
 import it.sevenbits.hellospring.core.repository.ItemsRepository;
 import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,5 +30,4 @@ public class ItemController {
             return ResponseEntity.ok(result);
         }
     }
-
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
+import java.util.Collection;
 
 @Controller
 @RequestMapping("/items")
@@ -23,7 +23,7 @@ public class ItemsController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public List<Item> list() {
+    public Collection collection() {
         return itemsRepository.getAllItems();
     }
 
@@ -32,11 +32,15 @@ public class ItemsController {
     public ResponseEntity<Item> create(
             @RequestBody Item newItem) {
         Item createdItem = itemsRepository.create(newItem);
-        URI location = UriComponentsBuilder.fromPath("/items/")
-                .path(String.valueOf(createdItem.getId()))
-                .build().toUri();
-        return ResponseEntity.created(location)
-                .body(createdItem);
+        if (createdItem == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            URI location = UriComponentsBuilder.fromPath("/items/")
+                    .path(String.valueOf(createdItem.getNumber()))
+                    .build().toUri();
+            return ResponseEntity.created(location)
+                    .body(createdItem);
+        }
     }
 
     @RequestMapping(method = RequestMethod.PUT)
@@ -48,7 +52,7 @@ public class ItemsController {
             return ResponseEntity.notFound().build();
         } else {
             URI location = UriComponentsBuilder.fromPath("/items/")
-                    .path(String.valueOf(result.getId()))
+                    .path(String.valueOf(result.getNumber()))
                     .build().toUri();
             return ResponseEntity.created(location).body(result);
         }

@@ -1,12 +1,14 @@
-CREATE TABLE item (
+CREATE TABLE items (
   id bigserial PRIMARY KEY,
-  name varchar);
+  firstName varchar,
+  lastName VARCHAR
+  );
 
-INSERT INTO item (name)
-  VALUES ('First Item');
+INSERT INTO item (firstName, lastName)
+  VALUES ('Ivan', 'Ivanov');
 
-INSERT INTO item (name)
-  VALUES ('Two Item');
+INSERT INTO item (firstName, lastName)
+  VALUES ('Petr', 'Petrov');
 
-INSERT INTO item (name)
-  VALUES ('Three Item');
+INSERT INTO item (firstName, lastName)
+  VALUES ('Sidr', 'Sidorov');
