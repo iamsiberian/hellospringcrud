@@ -1,8 +1,0 @@
-it\sevenbits\hellospring\core\repository\SampleItemsRepository.class
-it\sevenbits\hellospring\App.class
-it\sevenbits\hellospring\core\model\Item.class
-it\sevenbits\hellospring\config\RepositoryConfig.class
-it\sevenbits\hellospring\web\controllers\HelloWorldController.class
-it\sevenbits\hellospring\core\repository\ItemsRepository.class
-it\sevenbits\hellospring\web\controllers\ItemController.class
-it\sevenbits\hellospring\web\controllers\ItemsController.class
