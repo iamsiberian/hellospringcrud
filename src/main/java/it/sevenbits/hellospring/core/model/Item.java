@@ -4,22 +4,22 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Item {
-    private final long number;
+    private final long id;
     private final String firstName;
     private final String lastName;
 
     @JsonCreator
     public Item(
-            @JsonProperty("number") long number,
+            @JsonProperty("id") long id,
             @JsonProperty("firstName") String firstName,
-            @JsonProperty("LastName") String lastName) {
-        this.number = number;
+            @JsonProperty("lastName") String lastName) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public long getNumber() {
-        return number;
+    public long getId() {
+        return id;
     }
     public String getFirstName() {
         return firstName;

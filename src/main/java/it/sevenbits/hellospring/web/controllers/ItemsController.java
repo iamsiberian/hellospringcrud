@@ -36,7 +36,7 @@ public class ItemsController {
             return ResponseEntity.notFound().build();
         } else {
             URI location = UriComponentsBuilder.fromPath("/items/")
-                    .path(String.valueOf(createdItem.getNumber()))
+                    .path(String.valueOf(createdItem.getId()))
                     .build().toUri();
             return ResponseEntity.created(location)
                     .body(createdItem);
@@ -52,7 +52,7 @@ public class ItemsController {
             return ResponseEntity.notFound().build();
         } else {
             URI location = UriComponentsBuilder.fromPath("/items/")
-                    .path(String.valueOf(result.getNumber()))
+                    .path(String.valueOf(result.getId()))
                     .build().toUri();
             return ResponseEntity.created(location).body(result);
         }

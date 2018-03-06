@@ -4,11 +4,11 @@ CREATE TABLE items (
   lastName VARCHAR
   );
 
-INSERT INTO item (firstName, lastName)
+INSERT INTO items (firstName, lastName)
   VALUES ('Ivan', 'Ivanov');
 
-INSERT INTO item (firstName, lastName)
+INSERT INTO items (firstName, lastName)
   VALUES ('Petr', 'Petrov');
 
-INSERT INTO item (firstName, lastName)
+INSERT INTO items (firstName, lastName)
   VALUES ('Sidr', 'Sidorov');

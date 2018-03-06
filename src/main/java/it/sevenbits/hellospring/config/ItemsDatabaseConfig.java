@@ -15,8 +15,7 @@ import javax.sql.DataSource;
 public class ItemsDatabaseConfig {
     @Bean
     @Qualifier("itemsDataSource")
-    @ConfigurationProperties(
-            prefix = "spring.datasource.items")
+    @ConfigurationProperties(prefix = "spring.datasource.items")
     @FlywayDataSource
     public DataSource itemsDataSource() {
         return DataSourceBuilder.create().build();
@@ -24,11 +23,8 @@ public class ItemsDatabaseConfig {
 
     @Bean
     @Qualifier("itemsJdbcOperations")
-    public JdbcOperations itemsJdbcOperations(
-            @Qualifier("itemsDataSource")
-                    DataSource itemsDataSource
-    ) {
-        return new JdbcTemplate(itemsDataSource);
+    public JdbcOperations itemsJdbcOperations(@Qualifier("itemsDataSource") DataSource dataSource) {
+        return new JdbcTemplate(itemsDataSource());
     }
 
 
