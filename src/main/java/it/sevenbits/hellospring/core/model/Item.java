@@ -18,6 +18,7 @@ public class Item {
         this.lastName = lastName;
     }
 
+    @JsonProperty("id")
     public long getId() {
         return id;
     }

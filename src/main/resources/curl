@@ -1,0 +1,7 @@
+curl --request POST --url http://localhost:8080/login --header 'content-type: application/json' --data '{"login": "admin","password": "admin"}'
+
+curl --request GET --url http://localhost:8080/whoami --header 'authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZW5pcy5uZWx1YmluQDdiaXRzLml0IiwiaWF0IjoxNTIwNzUzMzk5LCJzdWIiOiJhZG1pbiIsImV4cCI6MTUyMDc2Nzc5OSwiYXV0aG9yaXRpZXMiOlsiQURNSU4iLCJVU0VSIl19.gbwzUQDwXI1eVCZqBECCH7Top_elFaqLUPaH2zj5F6H9McZ3AtPaTheSPWLp3PzARRIRvGexlqIATWK7vh7BZg'
+
+curl --request POST --url http://localhost:8080/login --header 'content-type: application/json' --data '{"login": "guest","password": "guest"}'
+
+curl --request GET --url http://localhost:8080/users --header 'authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkZW5pcy5uZWx1YmluQDdiaXRzLml0IiwiaWF0IjoxNTIwNzUzODQzLCJzdWIiOiJndWVzdCIsImV4cCI6MTUyMDc2ODI0MywiYXV0aG9yaXRpZXMiOlsiR1VFU1QiXX0.AS0Z3zUjnmyy5UxOeQT93vRQhqpNIbeXEqq-45kVtgMiXsou_vs_OjP0FtVAiZWIQqqhL9EeaQqL1hw42RbE2g'
